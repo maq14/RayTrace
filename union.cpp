@@ -80,7 +80,6 @@ Color Union::rayTrace(CRay ray, int depth)
         Color reflectionColor = rayTrace(newRay,depth+1);
         reflectionColor = reflectionColor.multiply(reflection);
         //reflectionColor = reflectionColor.moderate(primitive_near->getMaterial()->getColor());
-        std::cout<<reflectionColor.r<<" "<<reflectionColor.g<<" "<<reflectionColor.b<<std::endl;
         totalColor = totalColor.add(reflectionColor);
     }
     return totalColor;

@@ -18,6 +18,7 @@
 #include "phongmaterial.h"
 #include "lamp.h"
 #include "union.h"
+#include "cmodel.h"
 
 using namespace std;
 using namespace cv;
@@ -35,6 +36,7 @@ void drawpixel(Mat& mm,int x,int y,Color color)
     mm.at<Vec3b>(x,y)[2] = color.b*255;
 }
 void initScene(){
+    char ss[30] = ":/raytracing/obj/dragon.obj";
     Camera camera( GVector3(-20, 0, 15),GVector3(1,0,-0.5).normalize(),GVector3(0, 0, 1), 90);
     Plane plane1(GVector3(0, 0, 1),1.0);
     Plane plane2(GVector3(-1,0,0),50.0);
@@ -48,13 +50,15 @@ void initScene(){
     plane4.setMaterial(new phongMaterial(Color::red(),Color::white(),16,0.6,0.1,0.0));
     plane5.setMaterial(new phongMaterial(Color::white(),Color::white(),16,0.6,0.1,0.0));
     CSphere sphere(GVector3(10,0,4),4.5);
+    CModel model(ss);
+    model.load();
+    model.setMaterial(new phongMaterial(Color::yellow(),Color::white(),16,0.8,0.3,0.0));
     //cout<<sphere.getCenter().getX()<<" "<<sphere.getCenter().getY()<<" "<<sphere.getCenter().getZ()<<" "<<sphere.getRadius()<<endl;
     sphere.setMaterial(new phongMaterial(Color::red(),Color::white(),16,0.6,1.0,0.1));
-    cout<<sphere.getMaterial()->getRef()<<endl;
     Lamp light(GVector3(0,0,19.0),1.0,GVector3(0,0,-1));
     Union unions;
     unions.push(&plane1);unions.push(&plane2);unions.push(&plane3);unions.push(&plane4);unions.push(&plane5);
-    unions.push(&sphere);
+    unions.push(&sphere);unions.push(&model);
     unions.push(&light);
     long maxDepth=20;
     float dx=1.0f/WINDOW_WIDTH;
