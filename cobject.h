@@ -10,13 +10,17 @@ class CObject
 {
 public:
     CObject();
-    virtual IntersectResult isIntersected(CRay ray)=0;
+    virtual IntersectResult isIntersected(CRay ray);
     virtual ~CObject();
-    virtual bool isLight()=0;
+    virtual bool isLight();
     virtual Material* getMaterial(){
         return NULL;
     }
-    virtual GVector3 getNormal(GVector3 point)=0;
+    virtual GVector3 getNormal(GVector3 point);
+    virtual bool isSphere(){
+        return false;
+    }
+    int code;
 };
 
 #endif // COBJECT_H

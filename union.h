@@ -15,7 +15,7 @@ class Union
 public:
     Union();
     void push(CObject* object);
-    Color rayTrace(CRay ray,int depth);
+    Color rayTrace(CRay ray,int depth,CObject* &_object,IntersectResult*& res);
 private:
     vector<CObject*> CVector;
 };

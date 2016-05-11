@@ -24,3 +24,8 @@ Material::~Material()
 {
 
 }
+
+float Material::getRefr()
+{
+    return refraction;
+}

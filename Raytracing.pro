@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     union.cpp \
     cdet.cpp \
     ctriangle.cpp \
-    cmodel.cpp
+    cmodel.cpp \
+    lightarea.cpp
 
 QT  += core gui
 INCLUDEPATH += /usr/local/include
@@ -50,7 +51,8 @@ HEADERS += \
     union.h \
     cdet.h \
     ctriangle.h \
-    cmodel.h
+    cmodel.h \
+    lightarea.h
 
 DISTFILES +=
 
