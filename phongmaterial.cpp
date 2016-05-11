@@ -5,7 +5,7 @@ phongMaterial::phongMaterial()
 
 }
 
-phongMaterial::phongMaterial(Color _diffuse, Color _specular, float _shinness, float diffuse_matter, float specular_matter, float _reflectiveness)
+phongMaterial::phongMaterial(Color _diffuse, Color _specular, float _shinness, float diffuse_matter, float specular_matter, float _reflectiveness,float _refraction)
 {
     diffuse = _diffuse;
     specular = _specular;
@@ -13,6 +13,7 @@ phongMaterial::phongMaterial(Color _diffuse, Color _specular, float _shinness, f
     reflectiveness = _reflectiveness;
     this->diffuse_matter = diffuse_matter;
     this->specular_matter = specular_matter;
+    this->refraction = _refraction;
 }
 
 Color phongMaterial::sample(CRay ray, GVector3 position, GVector3 normal)

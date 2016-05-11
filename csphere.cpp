@@ -49,17 +49,21 @@ IntersectResult CSphere::isIntersected(CRay ray)
     float DdotV = ray.getDirection().dotMul(v);
     float a0 = v.dotMul(v)-radius*radius;
     float a1 = ray.getDirection().dotMul(ray.getDirection());
-    if(DdotV<0){
+    //if(DdotV<0){
         float discr = DdotV*DdotV-a0*a1;
         if(discr>0){
-            result.distance = ((-1)*DdotV-sqrt(discr))/a1;
+            float distance1 = ((-1)*DdotV-sqrt(discr))/a1;
+            if(distance1>0) result.distance = distance1;
+            else result.distance = ((-1)*DdotV+sqrt(discr))/a1;
             result.isHit = 1;
             result.object = this;
             result.position = ray.getPoint(result.distance);
             result.normal = result.position-center;
             result.normal.normalize();
+            result.front = (result.normal.dotMul(ray.getDirection()) <= 0)? true : false;
         }
-    }
+        if(result.distance < 0) return IntersectResult::noHit();
+    //}
     return result;
 }
 
@@ -71,4 +75,9 @@ CSphere::~CSphere()
 bool CSphere::isLight()
 {
     return false;
+}
+
+bool CSphere::isSphere()
+{
+    return true;
 }

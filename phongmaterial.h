@@ -11,7 +11,7 @@ class phongMaterial:public Material
 {
 public:
     phongMaterial();
-    phongMaterial(Color _diffuse,Color _specular,float _shinness,float diffuse_matter,float specular_matter,float _reflectiveness=0.1);
+    phongMaterial(Color _diffuse,Color _specular,float _shinness,float diffuse_matter,float specular_matter,float _reflectiveness,float _refraction=0.0f);
     Color sample(CRay ray,GVector3 position,GVector3 normal);
     void setLightDir(GVector3 lightDir);
     ~phongMaterial();

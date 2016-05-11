@@ -29,6 +29,7 @@ public:
     }
 
     bool isLight();
+    bool isSphere();
 
 private:
     GVector3 center;

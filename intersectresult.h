@@ -13,6 +13,7 @@ public:
     ~IntersectResult();
     float distance;//就是CRay类中的t
     bool isHit;
+    bool front;
     GVector3 position;//光线与物体的交点
     GVector3 normal;//光线与物体交点表面的法线
     CObject *object;

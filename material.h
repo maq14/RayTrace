@@ -25,8 +25,11 @@ public:
         return Color::black();
     }
 
+    float getRefr();
+
 protected:
     float reflectiveness;
+    float refraction;
 };
 
 #endif // MATERIAL_H

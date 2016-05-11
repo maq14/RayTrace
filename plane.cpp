@@ -27,6 +27,7 @@ IntersectResult Plane::isIntersected(CRay ray)
         result.distance = b/a;
         result.position = ray.getPoint(result.distance);
         result.normal = this->normal;
+        result.front = true;
     }
     return result;
 }
